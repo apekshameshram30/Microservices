@@ -1,0 +1,96 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7247"
+
+  },
+  "Routes": [
+    //for Product
+
+    {
+      "UpstreamPathTemplate": "/api/Gateway/Product",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamPathTemplate": "/api/Product",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7051
+        }
+      ]
+    },
+
+    //localhost:7051/api/controller/GetByUserNamebyproduct?name=Apeksha
+    //localhost:7051/api/controller/GetByUserNamebyproduct?name=Apeksha
+
+
+    //for User
+    {
+      "UpstreamPathTemplate": "/api/Gateway/User",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamPathTemplate": "/api/User",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7162
+        }
+      ]
+    },
+
+
+    ///////////////////////////////////////////Two Service////////////////////////
+
+    {
+      "UpstreamPathTemplate": "/api/Gateway/User/GetByUserName",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/User/GetByUserName",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7162
+        }
+      ]
+    },
+    //"https",
+    //:, //localhost:7162/api/User/GetByUserName?name=Apeksha
+
+
+
+    {
+      "UpstreamPathTemplate": "/api/Gateway/Product/GetByUserNamebyproduct",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Product/GetByUserNamebyproduct",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7051
+        }
+      ]
+    },
+
+    //"https",
+    //:, //localhost:7051/api/Product/GetByUserNamebyproduct?name=Apeksha
+
+
+
+    ////////////////////////////for getting the product on basis of user id
+    {
+      "UpstreamPathTemplate": "/api/Gateway/Product/GetProductByUserId",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/Product/GetProductByUserId",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7051
+        }
+      ],
+      "AddQueriesToRequest": true
+    }
+
+
+
+  ]
+}
